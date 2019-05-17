@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Router } from 'react-router-dom';
-
-import Context from './context';
-import Routes from 'routes';
-
-import { AddingOutline } from './assets/styled';
 import { createBrowserHistory } from 'history';
+
+import Context from 'context';
+import Routes from 'routes';
+import { AddingOutline } from 'assets/styled';
 
 export const history = createBrowserHistory();
 
