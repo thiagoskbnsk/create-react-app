@@ -1,6 +1,6 @@
-import React, { useReducer } from 'react';
+import React from 'react';
 
-import { authAction } from './actions/authAction';
+const GlobalContext = React.createContext({});
 
 const Context = props => {
   return <GlobalContext.Provider>{props.children}</GlobalContext.Provider>;

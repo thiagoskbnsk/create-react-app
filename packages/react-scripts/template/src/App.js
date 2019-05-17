@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { BrowserRouter, Router } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter, Router } from 'react-router-dom';
 
-import Context from "./context";
-import Routes from "routes";
+import Context from './context';
+import Routes from 'routes';
 
-import { AddingOutline } from "assets/styled";
-import { createBrowserHistory } from "history";
+import { AddingOutline } from './assets/styled';
+import { createBrowserHistory } from 'history';
 
 export const history = createBrowserHistory();
 
@@ -26,13 +26,13 @@ const App = () => {
   };
 
   const removeMousedownAndAddKeyDown = () => {
-    document.addEventListener("keydown", handleFirstTabEvent);
-    document.removeEventListener("mousedown", handleMouseDownOnce);
+    document.addEventListener('keydown', handleFirstTabEvent);
+    document.removeEventListener('mousedown', handleMouseDownOnce);
   };
 
   const removeKeydownAndAddMouseDown = () => {
-    document.addEventListener("mousedown", handleMouseDownOnce);
-    document.removeEventListener("keydown", handleFirstTabEvent);
+    document.addEventListener('mousedown', handleMouseDownOnce);
+    document.removeEventListener('keydown', handleFirstTabEvent);
   };
 
   useEffect(() => {
