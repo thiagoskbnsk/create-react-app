@@ -1,19 +1,9 @@
-import React, { useReducer } from "react";
+import React, { useReducer } from 'react';
 
-import { authAction } from "./actions/authAction";
-
-export const GlobalContext = React.createContext({
-  auth: {}
-});
+import { authAction } from './actions/authAction';
 
 const Context = props => {
-  const [globalState, globalDispatch] = useReducer(authAction, {});
-
-  return (
-    <GlobalContext.Provider value={{ globalState, globalDispatch }}>
-      {props.children}
-    </GlobalContext.Provider>
-  );
+  return <GlobalContext.Provider>{props.children}</GlobalContext.Provider>;
 };
 
 export default Context;
