@@ -1,26 +1,53 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import { BrowserRouter, Router } from "react-router-dom";
 
-function App() {
+import Context from "./context";
+import Routes from "routes";
+
+import { AddingOutline } from "assets/styled";
+import { createBrowserHistory } from "history";
+
+export const history = createBrowserHistory();
+
+const App = () => {
+  const [outline, setOutline] = useState(false);
+
+  const handleFirstTabEvent = e => {
+    if (e.keyCode === 9) {
+      removeKeydownAndAddMouseDown();
+      setOutline(true);
+    }
+  };
+
+  const handleMouseDownOnce = () => {
+    removeMousedownAndAddKeyDown();
+
+    setOutline(false);
+  };
+
+  const removeMousedownAndAddKeyDown = () => {
+    document.addEventListener("keydown", handleFirstTabEvent);
+    document.removeEventListener("mousedown", handleMouseDownOnce);
+  };
+
+  const removeKeydownAndAddMouseDown = () => {
+    document.addEventListener("mousedown", handleMouseDownOnce);
+    document.removeEventListener("keydown", handleFirstTabEvent);
+  };
+
+  useEffect(() => {
+    removeMousedownAndAddKeyDown();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Context>
+      {outline && <AddingOutline />}
+      <BrowserRouter>
+        <Router history={history}>
+          <Routes />
+        </Router>
+      </BrowserRouter>
+    </Context>
   );
-}
-
+};
 export default App;
